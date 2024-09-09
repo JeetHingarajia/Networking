@@ -1,0 +1,143 @@
+RIP Protocol
+PC1
+Ip 192.168.1.2/24 192.168.1.1
+PC2
+Ip 192.168.3.2/24 192.168.3.1
+PC3
+Ip 192.168.5.2/24 192.168.5.1
+
+Router 1
+R1
+configure terminal
+Interface fa0/0
+Ip address 192.168.1.1 255.255.255.0
+no shutdown
+exit
+Interface fa1/0
+Ip address 192.168.2.1 255.255.255.0
+no shutdown
+exit
+
+R2
+configure terminal
+Interface fa0/0
+Ip address 192.168.3.1 255.255.255.0
+no shutdown
+exit
+Interface fa1/0
+Ip address 192.168.2.2 255.255.255.0
+no shutdown
+exit 
+Interface g2/0
+Ip address 192.168.4.1 255.255.255.0
+
+R3
+configure terminal
+Interface g2/0
+Ip address 192.168.4.2 255.255.255.0
+no shutdown
+exit
+Interface fa0/0
+Ip address 192.168.5.1 255.255.255.0
+no shut
+exit
+Configure rip version1
+
+R1
+configure terminal
+router rip
+version 1
+network 192.168.1.0
+network 192.168.2.0
+exit
+R2
+configure terminal
+router rip
+version 1
+network 192.168.2.0
+network 192.168.3.0
+network 192.168.4.0
+exit
+exit
+R3
+configure terminal
+router rip
+version 1
+network 192.168.1.0
+network 192.168.2.0
+exit
+=====================================================================================
+OSPF 
+
+R1 
+configure terminal
+Interface f0/0
+Ip address 172.16.0.2 255.255.255.0
+no shut
+exit
+inter f1/0
+ip address 172.16.1.1 255.255.255.0
+no shut
+exit
+router ospf 100 
+network 172.16.0.0 0.0.0.255 area 0
+network 172.16.1.0 0.0.0.255 area 0
+#exit
+Exit
+
+R2
+Config t
+inter fa0/0 
+ip address 172.16.0.2 255.255.255.0
+no shut
+exit
+inter g2/0
+ip address 172.16.2.1 255.255.255.0
+no shut
+exit
+router ospf200
+network 172.16.1.0 0.0.0.255 area 0
+network 172.16.2.0 0.0.0.255 area 0
+network 172.16.3.0 0.0.0.255 area 0
+exit 
+
+R3
+exit
+inter f0/0
+ip address 172.16.4.2 255.255.255.0
+no shut
+exit
+inter g2/0
+ip address 172.16.2.2 255.255.255.0
+no shut
+exit
+router ospf 300
+network 172.16.2.0 0.0.0.255 area 0
+network 172.16.4.0 0.0.0.255 area 0
+
+PC1
+ip172.16.0.1/24 172.16.0.2
+PC2
+ip172.16.3.1/24 172.16.3.2
+PC3
+ip172.16.4.1/24 172.16.4.2
+===================================
+EIGRP
+
+R1 
+configure terminal
+Interface f0/0
+Ip address 172.16.0.2 255.255.255.0
+no shut
+exit
+inter f1/0
+ip address 172.16.1.1 255.255.255.0
+no shut
+exit
+router eigrp 25
+network 172.16.4.0
+network 172.16.3.0
+network 172.16.2.0 
+#exit
+Exit
+
