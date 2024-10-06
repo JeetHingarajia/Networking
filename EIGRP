@@ -2,13 +2,16 @@ R1
 configure terminal
 interface FastEthernet0/0
  ip address 192.168.1.1 255.255.255.0
- no shutdown
+ no shut
+ exit
 interface FastEthernet0/1
  ip address 192.168.5.1 255.255.255.0
- no shutdown
+ no shut
+ exit
 interface FastEthernet1/0
  ip address 192.168.4.1 255.255.255.0
- no shutdown
+ no shut
+ exit
 router eigrp 100
  network 192.168.1.0 0.0.0.255
  network 192.168.5.0 0.0.0.255
@@ -19,13 +22,15 @@ R2
 configure terminal
 interface FastEthernet0/0
  ip address 192.168.4.2 255.255.255.0
- no shutdown
+ no shut
+ exit
 interface FastEthernet0/1
  ip address 192.168.8.1 255.255.255.0
- no shutdown
+ no shut
+ exit
 interface FastEthernet1/0
  ip address 192.168.3.2 255.255.255.0
- no shutdown
+ no shutexit
 router eigrp 100
  network 192.168.4.0 0.0.0.255
  network 192.168.8.0 0.0.0.255
@@ -36,13 +41,15 @@ R3
 configure terminal
 interface FastEthernet0/0
  ip address 192.168.2.2 255.255.255.0
- no shutdown
+ no shut
+ exit
 interface FastEthernet0/1
  ip address 192.168.7.1 255.255.255.0
  no shutdown
 interface FastEthernet1/0
  ip address 192.168.3.1 255.255.255.0
- no shutdown
+ no shut
+ exit
 router eigrp 100
  network 192.168.2.0 0.0.0.255
  network 192.168.7.0 0.0.0.255
@@ -53,13 +60,17 @@ R4
 configure terminal
 interface FastEthernet0/0
  ip address 192.168.2.1 255.255.255.0
- no shutdown
+ no shut exit
+ exit
 interface FastEthernet0/1
  ip address 192.168.6.1 255.255.255.0
- no shutdown
+ no shut
+ exit
 interface FastEthernet1/0
  ip address 192.168.1.2 255.255.255.0
- no shutdown
+ no shut
+ exit
+
 router eigrp 100
  network 192.168.2.0 0.0.0.255
  network 192.168.6.0 0.0.0.255
