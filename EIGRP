@@ -1,0 +1,107 @@
+R1
+configure terminal
+interface FastEthernet0/0
+ ip address 192.168.1.1 255.255.255.0
+ no shutdown
+interface FastEthernet0/1
+ ip address 192.168.5.1 255.255.255.0
+ no shutdown
+interface FastEthernet1/0
+ ip address 192.168.4.1 255.255.255.0
+ no shutdown
+router eigrp 100
+ network 192.168.1.0 0.0.0.255
+ network 192.168.5.0 0.0.0.255
+ network 192.168.4.0 0.0.0.255
+ no auto-summary
+ exit
+R2
+configure terminal
+interface FastEthernet0/0
+ ip address 192.168.4.2 255.255.255.0
+ no shutdown
+interface FastEthernet0/1
+ ip address 192.168.8.1 255.255.255.0
+ no shutdown
+interface FastEthernet1/0
+ ip address 192.168.3.2 255.255.255.0
+ no shutdown
+router eigrp 100
+ network 192.168.4.0 0.0.0.255
+ network 192.168.8.0 0.0.0.255
+ network 192.168.3.0 0.0.0.255
+ no auto-summary
+ exit
+R3
+configure terminal
+interface FastEthernet0/0
+ ip address 192.168.2.2 255.255.255.0
+ no shutdown
+interface FastEthernet0/1
+ ip address 192.168.7.1 255.255.255.0
+ no shutdown
+interface FastEthernet1/0
+ ip address 192.168.3.1 255.255.255.0
+ no shutdown
+router eigrp 100
+ network 192.168.2.0 0.0.0.255
+ network 192.168.7.0 0.0.0.255
+ network 192.168.3.0 0.0.0.255
+ no auto-summary
+ exit
+R4
+configure terminal
+interface FastEthernet0/0
+ ip address 192.168.2.1 255.255.255.0
+ no shutdown
+interface FastEthernet0/1
+ ip address 192.168.6.1 255.255.255.0
+ no shutdown
+interface FastEthernet1/0
+ ip address 192.168.1.2 255.255.255.0
+ no shutdown
+router eigrp 100
+ network 192.168.2.0 0.0.0.255
+ network 192.168.6.0 0.0.0.255
+ network 192.168.1.0 0.0.0.255
+ no auto-summary
+ exit
+PC1
+PC1> ip 192.168.5.10 255.255.255.0 192.168.5.1
+PC1> ping 192.168.5.1    
+PC1> ping 192.168.1.1     
+PC1> ping 192.168.6.10    
+PC1> ping 192.168.8.10    
+PC1> ping 192.168.7.10    
+PC2
+# Assign IP address and default gateway
+PC2> ip 192.168.8.10 255.255.255.0 192.168.8.1
+PC2> ping 192.168.8.1     
+PC2> ping 192.168.4.1     
+PC2> ping 192.168.5.10    
+PC2> ping 192.168.6.10    
+PC2> ping 192.168.7.10    
+PC3
+# Assign IP address and default gateway
+PC3> ip 192.168.7.10 255.255.255.0 192.168.7.1
+PC3> ping 192.168.7.1     
+PC3> ping 192.168.2.1     
+PC3> ping 192.168.5.10    
+PC3> ping 192.168.6.10    
+PC3> ping 192.168.8.10    
+# Assign IP address and default gateway
+PC4> ip 192.168.6.10 255.255.255.0 192.168.6.1
+PC4> ping 192.168.6.1     
+PC4> ping 192.168.1.1     
+PC4> ping 192.168.5.10    
+PC4> ping 192.168.8.10    
+PC4> ping 192.168.7.10    
+
+
+
+
+
+
+
+
+
